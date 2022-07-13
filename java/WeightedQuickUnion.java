@@ -22,8 +22,9 @@ public class WeightedQuickUnion {
         return count;
     }
 
-    public int root(int p) {
+    public int find(int p) {
         while (p != id[p]) {
+            id[p] = id[id[p]];
             p = id[p];
         }
         return p;
@@ -31,23 +32,23 @@ public class WeightedQuickUnion {
     }
 
     public boolean connected(int p, int q) {
-        return root(p) == root(q);
+        return find(p) == find(q);
     }
 
     public void union(int p, int q) {
-        int i = root(p);
-        int j = root(q);
+        int pRoot = find(p);
+        int qRoot = find(q);
 
-        if (i == j) {
+        if (pRoot == qRoot) {
             return;
         }
 
-        if (sz[i] < sz[j]) {
-            id[i] = j;
-            sz[j] += sz[i];
+        if (sz[pRoot] < sz[qRoot]) {
+            id[pRoot] = qRoot;
+            sz[qRoot] += sz[pRoot];
         } else {
-            id[j] = i;
-            sz[i] += sz[j];
+            id[qRoot] = pRoot;
+            sz[pRoot] += sz[qRoot];
         }
         count--;
 
@@ -61,7 +62,7 @@ public class WeightedQuickUnion {
         uf0.union(3, 4);
         System.out.println(uf0.connected(0, 4));
         System.out.println(uf0.count());
-        System.out.println(uf0.root(3));
-        System.out.println(uf0.root(4));
+        System.out.println(uf0.find(3));
+        System.out.println(uf0.find(4));
     }
 }
