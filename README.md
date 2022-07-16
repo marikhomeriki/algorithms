@@ -14,7 +14,7 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 ## Week 01
 
-🟡 Union−Find
+🟢 Union−Find
 
 🟡 Analysis of Algorithms
 
