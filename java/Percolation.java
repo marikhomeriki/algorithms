@@ -1,29 +1,34 @@
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
-import java.util.*;
 
 public class Percolation {
-    private int id[][];
-    private WeightedQuickUnionUF uf;
+    private final int[][] id;
+    private final WeightedQuickUnionUF uf;
+    private final int n;
     private int openSites;
 
     // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
         id = new int[n][n];
-        uf = new WeightedQuickUnionUF(n * n);
+        uf = new WeightedQuickUnionUF(n * n + 2);
+        this.n = n;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 id[i][j] = 0;
             }
         }
+        for (int i = 0; i < n; i++) {
+            uf.union(n * n, i);
+        }
+        for (int i = n * n - n; i < n * n; i++) {
+            uf.union(n * n + 1, i);
+        }
     }
 
-    private ArrayList<Integer> getOpenNeighbors(int row, int col) {
-        ArrayList<Integer> neighbors = new ArrayList<Integer>();
+    private int[] getOpenNeighbors(int row, int col) {
+        int[] neighbors = new int[] { -1, -1, -1, -1 };
+        int pos = 0;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
-                int n = id.length;
                 if (Math.abs(i) + Math.abs(j) != 1) {
                     continue;
                 }
@@ -37,7 +42,8 @@ public class Percolation {
                     continue;
                 }
                 int k = n * (row + i) + (col + j);
-                neighbors.add(k);
+                neighbors[pos] = k;
+                pos++;
             }
         }
         return neighbors;
@@ -45,14 +51,18 @@ public class Percolation {
 
     // opens the site (row, col) if it is not open already
     public void open(int row, int col) {
+        row--;
+        col--;
         if (id[row][col] == 1) {
             return;
         }
         id[row][col] = 1;
-        ArrayList<Integer> openNeighbors = getOpenNeighbors(row, col);
-        int n = id.length;
+        int[] openNeighbors = getOpenNeighbors(row, col);
         int k = n * row + col;
         for (int neighbor : openNeighbors) {
+            if (neighbor == -1) {
+                continue;
+            }
             uf.union(neighbor, k);
         }
         openSites++;
@@ -60,21 +70,20 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
+        row--;
+        col--;
         return id[row][col] == 1;
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
-        int n = id.length;
-        int q = n * row + col;
-        for (int i = 0; i < n; i++) {
-            if (isOpen(0, i)) {
-                if (uf.find(i) == uf.find(q)) {
-                    return true;
-                }
-            }
+        row--;
+        col--;
+        if (id[row][col] != 1) {
+            return false;
         }
-        return false;
+        int q = n * row + col;
+        return uf.find(n * n) == uf.find(q);
     }
 
     // returns the number of open sites
@@ -84,15 +93,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        int n = id.length;
-        for (int i = 0; i < n; i++) {
-            for (int j = n * n - n; j < n * n; j++) {
-                if (uf.find(i) == uf.find(j)) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return uf.find(n * n) == uf.find(n * n + 1);
     }
 
     // test client (optional)
