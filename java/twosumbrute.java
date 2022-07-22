@@ -1,5 +1,5 @@
 
-public class twosumbrute {
+public class TwoSumBrute {
 
     public static int twosum(int[] a) {
         int n = a.length;
