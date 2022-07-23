@@ -5,7 +5,7 @@ import edu.princeton.cs.algs4.BinarySearch;
 
 public class TwoSumAdv {
 
-    public static int twosum(int[] a) {
+    public static int twoSum(int[] a) {
         Arrays.sort(a);
         int n = a.length;
         int count = 0;
@@ -22,7 +22,7 @@ public class TwoSumAdv {
 
     public static void main(String[] args) {
         int[] arr = new int[] { -1, 3, 1, 4 };
-        System.out.println(twosum(arr));
+        System.out.println(twoSum(arr));
 
     }
 }
