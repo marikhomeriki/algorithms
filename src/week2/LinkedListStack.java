@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 
 public class LinkedListStack<Item> {
 
@@ -20,6 +21,9 @@ public class LinkedListStack<Item> {
     }
 
     public Item pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
+        }
         Item item = first.item;
         first = first.next;
         return item;
@@ -29,7 +33,7 @@ public class LinkedListStack<Item> {
         LinkedListStack<Integer> stack = new LinkedListStack<Integer>();
         stack.push(5);
         System.out.println(stack.isEmpty());
-        // stack.pop();
+        stack.pop();
         System.out.println(stack.pop());
         System.out.println(stack.isEmpty());
     }
