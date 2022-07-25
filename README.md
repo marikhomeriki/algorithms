@@ -10,7 +10,7 @@ Algorithms course by [Robert Sedgewick](https://www.cs.princeton.edu/people/prof
 
 [Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2)
 
-Code and assignments are written both in `java` (using [algs4.jar](https://algs4.cs.princeton.edu/code/)) and `python`
+Code and assignments are written both in `java` (using [algs4.jar](https://algs4.cs.princeton.edu/code/))
 
 ## Week 01
 

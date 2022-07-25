@@ -1,7 +1,9 @@
 
-public class LinkedListStack {
+public class LinkedListStack<Item> {
     private int[] arr;
     private int n;
+
+    public LinkedListStack<Item> 
 
     public WeightedQuickUnion(int n) {
         id = new int[n];
