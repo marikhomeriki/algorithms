@@ -2,7 +2,8 @@ import java.util.NoSuchElementException;
 
 public class LinkedListStack<Item> {
 
-    public Node first = null;
+    private Node first = null;
+    private int size = 0;
 
     private class Node {
         Item item;
@@ -18,6 +19,14 @@ public class LinkedListStack<Item> {
         first = new Node();
         first.item = item;
         first.next = oldFirst;
+        size++;
+    }
+
+    public Item peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty");
+        }
+        return first.item;
     }
 
     public Item pop() {
@@ -26,14 +35,22 @@ public class LinkedListStack<Item> {
         }
         Item item = first.item;
         first = first.next;
+        size--;
         return item;
+    }
+
+    public int size() {
+        return size;
     }
 
     public static void main(String[] args) {
         LinkedListStack<Integer> stack = new LinkedListStack<Integer>();
         stack.push(5);
+        System.out.println(stack.size());
+        System.out.println(stack.peek());
         System.out.println(stack.isEmpty());
         stack.pop();
+        System.out.println(stack.size());
         System.out.println(stack.pop());
         System.out.println(stack.isEmpty());
     }
