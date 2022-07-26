@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class LinkedListStack<Item> {
+public class LinkedListStack<Item> implements Stack<Item> {
 
     private Node first = null;
     private int size = 0;
@@ -10,10 +10,12 @@ public class LinkedListStack<Item> {
         Node next;
     }
 
+    @Override
     public boolean isEmpty() {
         return first == null;
     }
 
+    @Override
     public void push(Item item) {
         Node oldFirst = first;
         first = new Node();
@@ -22,6 +24,7 @@ public class LinkedListStack<Item> {
         size++;
     }
 
+    @Override
     public Item peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("Stack is empty");
@@ -29,6 +32,7 @@ public class LinkedListStack<Item> {
         return first.item;
     }
 
+    @Override
     public Item pop() {
         if (isEmpty()) {
             throw new NoSuchElementException("Stack is empty");
@@ -39,6 +43,7 @@ public class LinkedListStack<Item> {
         return item;
     }
 
+    @Override
     public int size() {
         return size;
     }
