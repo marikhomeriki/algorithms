@@ -27,6 +27,8 @@ public class Main {
         // printStack(ss);
 
         printIterable(si);
+        printIterable(ss);
+        printIterable(qs);
     }
 
     public static <Item> void printQueue(Queue<Item> queue) {
