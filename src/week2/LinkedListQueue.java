@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedListQueue<Item> implements Queue<Item> {
@@ -76,5 +77,28 @@ public class LinkedListQueue<Item> implements Queue<Item> {
 
         System.out.println(queue.size());
         System.out.println(queue.isEmpty());
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new Iterator<Item>() {
+            private Node cursor = first;
+
+            @Override
+            public boolean hasNext() {
+                return cursor != null;
+            }
+
+            @Override
+            public Item next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Empty Iterator");
+                }
+                Item cur = cursor.item;
+                cursor = cursor.next;
+                return cur;
+            }
+
+        };
     }
 }
