@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArrayQueue<Item> implements Queue<Item> {
@@ -90,5 +91,28 @@ public class ArrayQueue<Item> implements Queue<Item> {
         // System.out.println(queue.peek());
         System.out.println(queue.size());
         // System.out.println(Arrays.toString(queue.a));
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new Iterator<Item>() {
+            private int cursor = 0;
+
+            @Override
+            public boolean hasNext() {
+                return cursor < n;
+            }
+
+            @Override
+            public Item next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Empty Iterator");
+                }
+                Item cur = a[(first + cursor) % a.length];
+                cursor++;
+                return cur;
+            }
+
+        };
     }
 }
