@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class LinkedListQueue<Item> {
+public class LinkedListQueue<Item> implements Queue<Item> {
 
     private Node first = null;
     private Node last = null;
@@ -11,10 +11,12 @@ public class LinkedListQueue<Item> {
         Node next;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public void enqueue(Item item) {
         if (size == 0) {
             last = new Node();
@@ -31,6 +33,7 @@ public class LinkedListQueue<Item> {
         size++;
     }
 
+    @Override
     public Item peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
@@ -38,6 +41,7 @@ public class LinkedListQueue<Item> {
         return first.item;
     }
 
+    @Override
     public Item dequeue() {
         if (isEmpty()) {
             throw new NoSuchElementException("Queue is empty");
@@ -53,6 +57,7 @@ public class LinkedListQueue<Item> {
         return item;
     }
 
+    @Override
     public int size() {
         return size;
     }
