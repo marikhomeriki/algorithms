@@ -9,6 +9,7 @@ public class Main {
         si.push(1);
         si.push(2);
         si.push(3);
+
         ss.push("M");
         ss.push("S");
         ss.push("JB");
@@ -16,12 +17,14 @@ public class Main {
         qi.enqueue(1);
         qi.enqueue(2);
         qi.enqueue(3);
+
         qs.enqueue("Mari");
         qs.enqueue("Sandro");
         qs.enqueue("cuguchebi");
 
         printIterable(si);
         printIterable(ss);
+
         printIterable(qs);
         printIterable(qi);
     }
