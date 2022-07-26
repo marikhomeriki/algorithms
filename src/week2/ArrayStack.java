@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArrayStack<Item> implements Stack<Item> {
@@ -81,5 +82,29 @@ public class ArrayStack<Item> implements Stack<Item> {
         System.out.println(stack.pop());
         System.out.println(stack.size());
         System.out.println(Arrays.toString(stack.arr));
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+
+        return new Iterator<Item>() {
+            private int cursor = n - 1;
+
+            @Override
+            public boolean hasNext() {
+                return cursor >= 0;
+            }
+
+            @Override
+            public Item next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Empty Iterator");
+                }
+                Item cur = arr[cursor];
+                cursor--;
+                return cur;
+            }
+
+        };
     }
 }
