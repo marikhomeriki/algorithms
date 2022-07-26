@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class ArrayStack<Item> {
+public class ArrayStack<Item> implements Stack<Item> {
 
     private static final int INIT_CAPACITY = 8;
 
@@ -13,6 +13,7 @@ public class ArrayStack<Item> {
         n = 0;
     }
 
+    @Override
     public boolean isEmpty() {
         return n == 0;
     }
@@ -25,6 +26,7 @@ public class ArrayStack<Item> {
         arr = newArray;
     }
 
+    @Override
     public void push(Item item) {
         if (n == arr.length) {
             resize(n * 2);
@@ -33,6 +35,7 @@ public class ArrayStack<Item> {
         n++;
     }
 
+    @Override
     public Item peek() {
         if (isEmpty()) {
             throw new NoSuchElementException("Stack is empty");
@@ -40,6 +43,7 @@ public class ArrayStack<Item> {
         return arr[n - 1];
     }
 
+    @Override
     public Item pop() {
         if (isEmpty()) {
             throw new NoSuchElementException("Stack is empty");
@@ -49,12 +53,13 @@ public class ArrayStack<Item> {
         n--;
 
         if (n > 0 && n == arr.length / 4) {
-            resize(n / 2);
+            resize(arr.length / 2);
         }
 
         return numToPop;
     }
 
+    @Override
     public int size() {
         return n;
     }
@@ -73,9 +78,7 @@ public class ArrayStack<Item> {
         stack.push(8);
         stack.push(9);
         System.out.println(stack.size());
-        System.out.println(stack.arr.length);
         System.out.println(stack.pop());
-        System.out.println(stack.arr.length);
         System.out.println(stack.size());
         System.out.println(Arrays.toString(stack.arr));
     }
