@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class LinkedListStack<Item> implements Stack<Item> {
@@ -58,5 +59,28 @@ public class LinkedListStack<Item> implements Stack<Item> {
         System.out.println(stack.size());
         System.out.println(stack.pop());
         System.out.println(stack.isEmpty());
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return new Iterator<Item>() {
+            private Node cursor = first;
+
+            @Override
+            public boolean hasNext() {
+                return cursor != null;
+            }
+
+            @Override
+            public Item next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Empty Iterator");
+                }
+                Item cur = cursor.item;
+                cursor = cursor.next;
+                return cur;
+            }
+
+        };
     }
 }
