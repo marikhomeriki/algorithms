@@ -20,11 +20,13 @@ public class Main {
         qs.enqueue("Sandro");
         qs.enqueue("cuguchebi");
 
-        printQueue(qi);
-        printQueue(qs);
+        // printQueue(qi);
+        // printQueue(qs);
 
-        printStack(si);
-        printStack(ss);
+        // printStack(si);
+        // printStack(ss);
+
+        printIterable(si);
     }
 
     public static <Item> void printQueue(Queue<Item> queue) {
@@ -37,6 +39,12 @@ public class Main {
     public static <Item> void printStack(Stack<Item> stack) {
         while (!stack.isEmpty()) {
             System.out.println(stack.pop());
+        }
+    }
+
+    public static <Item> void printIterable(Iterable<Item> iterable) {
+        for (Item item : iterable) {
+            System.out.println(item);
         }
     }
 
