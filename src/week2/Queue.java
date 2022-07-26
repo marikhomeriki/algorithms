@@ -1,4 +1,4 @@
-public interface Queue<Item> {
+public interface Queue<Item> extends Iterable<Item> {
 
     public int size();
 
