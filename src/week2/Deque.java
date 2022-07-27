@@ -124,29 +124,6 @@ public class Deque<Item> implements Iterable<Item> {
 
     }
 
-    public Iterator<Item> reverseIterator() {
-        return new Iterator<Item>() {
-            private Node curLast = last;
-
-            @Override
-            public boolean hasNext() {
-                return curLast != null;
-            }
-
-            @Override
-            public Item next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException("Empty Iterator");
-                }
-                Item item = curLast.item;
-                curLast = curLast.prev;
-                return item;
-            }
-
-        };
-
-    }
-
     // unit testing (required)
     public static void main(String[] args) {
         Deque<Integer> d = new Deque<>();
