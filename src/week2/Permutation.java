@@ -9,11 +9,10 @@ public class Permutation {
         while (!StdIn.isEmpty()) {
             String string = StdIn.readString();
             queue.enqueue(string);
-
         }
 
         for (int i = 0; i < k; i++) {
-            StdOut.println(queue.sample());
+            StdOut.println(queue.dequeue());
         }
     }
 }
