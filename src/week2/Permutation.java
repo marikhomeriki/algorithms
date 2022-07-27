@@ -1,6 +1,5 @@
-import java.util.Arrays;
-
 import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 public class Permutation {
     public static void main(String[] args) {
@@ -14,8 +13,7 @@ public class Permutation {
         }
 
         for (int i = 0; i < k; i++) {
-            System.out.println(queue.sample());
+            StdOut.println(queue.sample());
         }
-
     }
 }
