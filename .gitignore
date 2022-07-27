@@ -2,3 +2,5 @@
 .vscode/
 *.class
 *.jar
+*.txt
+*.zip
