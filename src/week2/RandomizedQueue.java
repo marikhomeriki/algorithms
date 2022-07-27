@@ -1,19 +1,20 @@
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
-    private static final int CONSTANT_SIZE = 4;
+    private static final int CONSTANT_SIZE = 8;
 
     private Item[] a;
     private int n;
     private int last = 0;
 
     // construct an empty randomized queue
+
+    @SuppressWarnings("unchecked")
     public RandomizedQueue() {
-        a = (Item[]) new Object[8];
+        a = (Item[]) new Object[CONSTANT_SIZE];
         n = 0;
     }
 
@@ -27,6 +28,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return n;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         Item[] copy = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++) {
@@ -80,33 +82,40 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Iterator<Item> iterator() {
-        Item[] arr = (Item[]) new Object[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = a[i];
-        }
-        StdRandom.shuffle(arr);
-
-        return new Iterator<Item>() {
-            private int cursor = 0;
-
-            @Override
-            public boolean hasNext() {
-                return cursor < n;
-            }
-
-            @Override
-            public Item next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException("Iterator is empty");
-                }
-                Item item = arr[cursor];
-                cursor++;
-                return item;
-            }
-        };
+        return new RandomizedQueueIterator();
     }
 
-    // unit testing (required)
+    @SuppressWarnings("unchecked")
+    private class RandomizedQueueIterator implements Iterator<Item> {
+
+        private int cursor = 0;
+        private Item[] arr = (Item[]) new Object[n];
+
+        private RandomizedQueueIterator() {
+
+            for (int i = 0; i < n; i++) {
+                arr[i] = a[i];
+            }
+            StdRandom.shuffle(arr);
+        }
+
+        @Override
+        public boolean hasNext() {
+            return cursor < n;
+        }
+
+        @Override
+        public Item next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException("Iterator is empty");
+            }
+            Item item = arr[cursor];
+            cursor++;
+            return item;
+        }
+
+    }
+
     public static void main(String[] args) {
         RandomizedQueue<Integer> rq = new RandomizedQueue<>();
         System.out.println(rq.size());

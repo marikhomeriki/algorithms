@@ -4,13 +4,14 @@ import java.util.NoSuchElementException;
 
 public class ArrayQueue<Item> implements Queue<Item> {
 
-    private static final int CONSTANT_SIZE = 4;
+    private static final int CONSTANT_SIZE = 8;
 
     private Item[] a;
     private int n;
     private int first;
     private int last;
 
+    @SuppressWarnings("unchecked")
     public ArrayQueue() {
         a = (Item[]) new Object[CONSTANT_SIZE];
         n = 0;
@@ -18,6 +19,7 @@ public class ArrayQueue<Item> implements Queue<Item> {
         last = 0;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         Item[] copy = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++) {

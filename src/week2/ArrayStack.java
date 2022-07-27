@@ -9,6 +9,7 @@ public class ArrayStack<Item> implements Stack<Item> {
     private Item[] arr; // Array to resize
     private int n; // logical size of an array
 
+    @SuppressWarnings("unchecked")
     public ArrayStack() {
         arr = (Item[]) new Object[INIT_CAPACITY];
         n = 0;
@@ -19,6 +20,7 @@ public class ArrayStack<Item> implements Stack<Item> {
         return n == 0;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(int newLength) {
         Item[] newArray = (Item[]) new Object[newLength];
         for (int i = 0; i < n; i++) {
