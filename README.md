@@ -20,7 +20,7 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 ## Week 02
 
-🟡 Stacks and Queues
+🟢 Stacks and Queues
 
 🟡 Elementary Sorts
 
