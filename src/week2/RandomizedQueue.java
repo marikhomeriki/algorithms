@@ -12,7 +12,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     // construct an empty randomized queue
 
-    @SuppressWarnings("unchecked")
     public RandomizedQueue() {
         a = (Item[]) new Object[CONSTANT_SIZE];
         n = 0;
@@ -28,7 +27,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return n;
     }
 
-    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         Item[] copy = (Item[]) new Object[capacity];
         for (int i = 0; i < n; i++) {
@@ -85,11 +83,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return new RandomizedQueueIterator();
     }
 
-    @SuppressWarnings("unchecked")
     private class RandomizedQueueIterator implements Iterator<Item> {
 
         private int cursor = 0;
-        private Item[] arr = (Item[]) new Object[n];
+        private final Item[] arr = (Item[]) new Object[n];
 
         private RandomizedQueueIterator() {
 
