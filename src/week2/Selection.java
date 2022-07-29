@@ -1,9 +1,7 @@
 import java.util.Arrays;
-
 import edu.princeton.cs.algs4.StdOut;
 
 public class Selection {
-
     public static <Item> void sort(Comparable<Item>[] a) {
         int n = a.length;
         for (int i = 0; i < n; i++) {
@@ -50,9 +48,8 @@ public class Selection {
         Selection.sort(a);
         boolean x = Selection.isSorted(a);
         System.out.println(x);
-        // System.out.println(Arrays.toString(a));
+        System.out.println(Arrays.toString(a));
         Selection.show(a);
-
     }
 
 }
