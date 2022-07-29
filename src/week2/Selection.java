@@ -10,8 +10,8 @@ public class Selection {
                 if (less(a[j], a[min])) {
                     min = j;
                 }
-                exch(a, i, min);
             }
+            exch(a, i, min);
         }
     }
 
@@ -51,5 +51,4 @@ public class Selection {
         System.out.println(Arrays.toString(a));
         Selection.show(a);
     }
-
 }
