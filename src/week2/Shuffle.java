@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.concurrent.Exchanger;
 
 import edu.princeton.cs.algs4.StdRandom;
 
@@ -26,5 +25,7 @@ public class Shuffle {
         Integer[] a = new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8 };
         shuffle(a);
         System.out.println(Arrays.toString(a));
+        int rr = StdRandom.uniform(1);
+        System.out.println(rr);
     }
 }
