@@ -7,6 +7,9 @@ public class BruteCollinearPoints {
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
+        if (points == null) {
+            throw new IllegalArgumentException("points array is null");
+        }
         int n = points.length;
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
