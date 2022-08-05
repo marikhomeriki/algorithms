@@ -1,66 +1,59 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FastCollinearPoints {
+    private LineSegment[] segments;
 
-    private int numOfSegments;
-
-    // finds all line segments containing 4 or more points
     public FastCollinearPoints(Point[] points) {
-        int n = points.length;
-        Point[] temp = new Point[n];
-        for (int i = 0; i < n; i++) {
-            temp[i] = points[i];
-        }
-        Arrays.sort(temp);
-        for (int i = 0; i < n; i++) {
-            Point ti = temp[i];
-            Point[] others = new Point[n - (i + 1)];
-            double[] d = new double[others.length];
-            for (int j = i + 1; j < n; j++) {
-                others[j - 1 - i] = temp[j];
-            }
-            Arrays.sort(others, ti.slopeOrder());
+        Point[] master = Arrays.copyOf(points, points.length);
+        Point[] buffer = Arrays.copyOf(points, points.length);
+        ArrayList<LineSegment> list = new ArrayList<LineSegment>();
+        Arrays.sort(master);
 
-            int setSize = 1;
-            for (int l = 1; l < others.length; l++) {
-                double slope = ti.slopeTo(others[l - 1]);
+        for (int i = 0; i < master.length; ++i) {
+            Point origin = master[i];
+            Arrays.sort(buffer);
+            Arrays.sort(buffer, origin.slopeOrder());
 
-                if (slope == ti.slopeTo(others[l])) {
-                    setSize++;
+            int count = 1;
+            Point start = buffer[0];
 
-                } else {
-                    if (setSize >= 3) {
-                        LineSegment seg = new LineSegment(ti, others[l - 1]);
-                        System.out.println("test " + seg);
+            for (int j = 0; j < buffer.length - 1; ++j) {
+                if (buffer[j].slopeTo(origin) == buffer[j + 1].slopeTo(origin)) {
+                    count++;
+                    if (count == 2) {
+                        start = buffer[j];
+                        count++;
+                    } else if (count >= 4 && j + 1 == buffer.length - 1) {
+                        if (start.compareTo(origin) > 0) {
+                            list.add(new LineSegment(origin, buffer[j + 1]));
+                        }
+                        count = 1;
                     }
-                    setSize = 1;
+                } else if (count >= 4) {
+                    if (start.compareTo(origin) > 0) {
+                        list.add(new LineSegment(origin, buffer[j]));
+                    }
+                    count = 1;
+                } else {
+                    count = 1;
                 }
 
             }
-            if (setSize >= 3) {
-                LineSegment seg = new LineSegment(ti, others[others.length - 1]);
-                System.out.println("test " + seg);
+            if (count >= 3 && start.compareTo(origin) > 0) {
+                list.add(new LineSegment(origin, buffer[buffer.length - 1]));
             }
-
-            for (int k = 0; k < d.length; k++) {
-                d[k] = ti.slopeTo(others[k]);
-            }
-            // System.out.println(ti + " " + Arrays.toString(others));
-            System.out.println(ti + " " + Arrays.toString(d));
         }
-        numOfSegments++;
 
+        segments = list.toArray(new LineSegment[list.size()]);
     }
 
-    // the number of line segments
     public int numberOfSegments() {
-        return numOfSegments;
+        return segments.length;
     }
 
-    // the line segments
     public LineSegment[] segments() {
-        return null;
-
+        return Arrays.copyOf(segments, numberOfSegments());
     }
 
     public static void main(String[] args) {
@@ -70,25 +63,29 @@ public class FastCollinearPoints {
                 new Point(3, 6),
                 new Point(4, 8),
                 new Point(5, 10),
+                new Point(6, 12),
+                new Point(7, 14),
+                new Point(8, 16),
+                new Point(9, 18),
+                new Point(10, 20),
 
-                // new Point(10, 11),
-                // new Point(20, 22),
-                // new Point(30, 33),
-                // new Point(40, 44),
+                new Point(10, 11),
+                new Point(20, 22),
+                new Point(30, 33),
+                new Point(40, 44),
 
-                // new Point(1, 1),
-                // new Point(2, 2),
-                // new Point(3, 3),
-                // new Point(4, 4),
+                new Point(1, 1),
+                new Point(2, 2),
+                new Point(3, 3),
+                new Point(4, 4),
 
-                // new Point(15, 59),
-                // new Point(23, 64),
-                // new Point(73, 34),
-                // new Point(24, 87),
+                new Point(15, 59),
+                new Point(23, 24),
+                new Point(73, 34),
+                new Point(24, 87),
         };
 
         FastCollinearPoints f = new FastCollinearPoints(points);
-        System.out.println(f.numOfSegments);
-
+        System.out.println(Arrays.toString(f.segments()));
     }
 }
