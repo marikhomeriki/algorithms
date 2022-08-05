@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.StdRandom;
 
 public class QuickSort {
 
-    private static int partition(Comparable[] a, int lo, int hi) {
+    public static int partition(Comparable[] a, int lo, int hi) {
         int i = lo;
         int j = hi + 1;
 
