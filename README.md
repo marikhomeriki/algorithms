@@ -26,9 +26,9 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 ## Week 03
 
-🟡 Mergesort
+🟢 Mergesort
 
-🟡 Quicksort
+🟢 Quicksort
 
 ## Week 04
 
