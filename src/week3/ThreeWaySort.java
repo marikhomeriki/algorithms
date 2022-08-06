@@ -50,7 +50,7 @@ public class ThreeWaySort {
 
         }
         sort(a, lo, lt - 1);
-        sort(a, lt + 1, hi);
+        sort(a, gt + 1, hi);
     }
 
     public static void sort(Comparable[] a) {
@@ -59,7 +59,7 @@ public class ThreeWaySort {
     }
 
     public static void main(String[] args) {
-        Integer[] a = new Integer[] { 8, 4, 3, 9, 10, 7, 6, 1, 11, 2, 5 };
+        Integer[] a = new Integer[] { 8, 4, 8, 8, 10, 8, 6, 8, 11, 8, 5 };
 
         sort(a);
         System.out.println(Arrays.toString(a));
