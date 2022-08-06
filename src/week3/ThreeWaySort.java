@@ -9,7 +9,6 @@ public class ThreeWaySort {
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;
-
     }
 
     private static boolean less(Comparable v, Comparable w) {
@@ -26,6 +25,7 @@ public class ThreeWaySort {
         if (lo >= hi) {
             return;
         }
+
         int i = lo;
         int lt = lo;
         int gt = hi;
@@ -47,7 +47,6 @@ public class ThreeWaySort {
             } else {
                 i++;
             }
-
         }
         sort(a, lo, lt - 1);
         sort(a, gt + 1, hi);
@@ -60,9 +59,7 @@ public class ThreeWaySort {
 
     public static void main(String[] args) {
         Integer[] a = new Integer[] { 8, 4, 8, 8, 10, 8, 6, 8, 11, 8, 5 };
-
         sort(a);
         System.out.println(Arrays.toString(a));
     }
-
 }
