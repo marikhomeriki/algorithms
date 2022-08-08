@@ -39,8 +39,8 @@ public class MaxPQ<Item extends Comparable<Item>> {
     }
 
     public void sink(int k) {
-        while (2 * k <= n) {
 
+        while (2 * k <= n) {
             int j = 2 * k;
             if (j < n && less(j, j + 1)) {
                 j++;
@@ -50,7 +50,6 @@ public class MaxPQ<Item extends Comparable<Item>> {
             }
             exch(k, j);
             k = j;
-
         }
     }
 
@@ -68,14 +67,12 @@ public class MaxPQ<Item extends Comparable<Item>> {
         return max;
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) {s
         MaxPQ<Integer> pq2 = new MaxPQ<>(3);
         System.out.println(pq2.size());
         System.out.println(pq2.isEmpty());
         pq2.insert(7);
         System.out.println(pq2.size());
-
     }
 
 }
