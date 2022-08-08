@@ -12,7 +12,6 @@ public class HeapSort<Item> {
         }
 
         // sortdown
-
         while (n > 1) {
             exch(a, 1, n--);
             sink(a, 1, n);
