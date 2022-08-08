@@ -67,7 +67,7 @@ public class MaxPQ<Item extends Comparable<Item>> {
         return max;
     }
 
-    public static void main(String[] args) {s
+    public static void main(String[] args) {
         MaxPQ<Integer> pq2 = new MaxPQ<>(3);
         System.out.println(pq2.size());
         System.out.println(pq2.isEmpty());
