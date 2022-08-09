@@ -1,11 +1,10 @@
-import java.util.Arrays;
-
 import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Queue;
 
 public class Board {
 
-    private int n;
-    private int[][] board;
+    private final int n;
+    private final int[][] board;
 
     // create a board from an n-by-n array of tiles,
     // where tiles[row][col] = tile at (row, col)
@@ -26,17 +25,20 @@ public class Board {
 
     // string representation of this board
     public String toString() {
-        String dim = String.valueOf(n);
-        String string = "";
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(n);
+        builder.append("\n");
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                String temp = String.valueOf(board[i][j]);
-                string = string + " " + temp;
+                builder.append(" ");
+                builder.append(board[i][j]);
             }
-            string = string + "\n";
+            builder.append("\n");
         }
-        return dim + "\n" + string;
+
+        return builder.toString();
     }
 
     // board dimension n
@@ -98,15 +100,15 @@ public class Board {
             return false;
         }
 
-        Board board = (Board) y;
+        Board that = (Board) y;
 
-        if (this.dimension() != board.dimension()) {
+        if (this.dimension() != that.dimension()) {
             return false;
         }
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                if (this.board[i][j] != board.board[i][j]) {
+                if (this.board[i][j] != that.board[i][j]) {
                     return false;
                 }
             }
@@ -116,7 +118,7 @@ public class Board {
 
     // all neighboring boards
     public Iterable<Board> neighbors() {
-        ArrayQueue<Board> queue = new ArrayQueue<>();
+        Queue<Board> queue = new Queue<>();
         int emptyI = -1;
         int emptyJ = -1;
         for (int i = 0; i < n; i++) {
@@ -179,105 +181,32 @@ public class Board {
 
     // a board that is obtained by exchanging any pair of tiles
     public Board twin() {
-        int[][] twin = copy(board);
+        int[][] twinTiles = copy(board);
 
-        // int xi = StdRandom.uniform(0, n);
-        // int xj = StdRandom.uniform(0, n);
-        // int yi = StdRandom.uniform(0, n);
-        // int yj = StdRandom.uniform(0, n);
-
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                int xi = StdRandom.uniform(0, n);
-                int xj = StdRandom.uniform(0, n);
-                int yi = StdRandom.uniform(0, n);
-                int yj = StdRandom.uniform(0, n);
-                if ((xi == yi) && (xj == yj)) {
-                    continue;
-                }
-
-                if (twin[xi][xj] == 0) {
-                    System.out.println("test " + twin[xi][xj]);
-                    continue;
-                }
-                swap(twin, xi, xj, yi, yj);
-
-            }
+        if (twinTiles[0][0] != 0 && twinTiles[0][1] != 0) {
+            swap(twinTiles, 0, 0, 0, 1);
+        } else {
+            swap(twinTiles, 1, 0, 1, 1);
         }
-        Board b = new Board(twin);
-        System.out.println(b.toString());
 
-        return null;
+        return new Board(twinTiles);
 
     }
 
-    // unit testing (not graded)
     public static void main(String[] args) {
-
-        int n = 3;
-        int[][] tiles = new int[][] {
-                { 8, 1, 3 },
-                { 4, 0, 2 },
-                { 7, 6, 5 },
-
-        };
-        int[][] tile = new int[][] {
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 0 },
-
-        };
-
-        int[][] til = new int[][] {
-                { 1, 0, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 2 },
-
-        };
-        int[][] tils = new int[][] {
-                { 0, 1, 2 },
-                { 3, 4, 5 },
-                { 6, 7, 8 },
-
-        };
-        int[][] tilz = new int[][] {
-                { 2, 1, 0 },
-                { 3, 4, 5 },
-                { 6, 7, 8 },
-
-        };
-        int[][] tilze = new int[][] {
-                { 2, 1, 6 },
-                { 3, 4, 5 },
-                { 0, 7, 8 },
-
-        };
-
-        int[][] tlze = new int[][] {
+        int[][] matrix = {
                 { 3, 5, 1 },
                 { 0, 4, 7 },
                 { 2, 6, 8 },
-
         };
 
-        // for (int i = 0; i < n; i++) {
-        // for (int j = 0; j < n; j++) {
-        // tiles[i][j] = n * i + j;
-        // }
-        // }
-        Board board = new Board(tlze);
-        System.out.println(Arrays.deepToString(tile));
+        Board board = new Board(matrix);
         System.out.println(board.toString());
-        System.out.println(board.hamming());
-        System.out.println(board.manhattan());
-        System.out.println(board.isGoal());
-        System.out.println(board.neighbors());
-        System.out.println(board.twin());
-
-        // for (Board neighbor : board.neighbors()) {
-        // System.out.println(neighbor);
-        // }
-
+        // System.out.println(board.hamming());
+        // System.out.println(board.manhattan());
+        // System.out.println(board.isGoal());
+        // System.out.println(board.neighbors());
+        // System.out.println(board.twin());
     }
 
 }
