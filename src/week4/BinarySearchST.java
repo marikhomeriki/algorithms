@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+import edu.princeton.cs.algs4.Queue;
 
 public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
@@ -104,6 +105,45 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         return get(key) != null;
     }
 
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new Queue<Key>();
+        for (int i = rank(lo); i < rank(hi); i++) {
+            queue.enqueue(keys[i]);
+        }
+        if (contains(hi)) {
+            queue.enqueue(keys[rank(hi)]);
+        }
+        return queue;
+
+    }
+
+    public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
+
+    public void delete(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("The argument is null");
+        }
+        if (isEmpty()) {
+            return;
+        }
+        int i = rank(key);
+
+        if (i == n || key.compareTo(keys[i]) != 0) {
+            return;
+        }
+
+        for (int j = i; j < n; j++) {
+            keys[j] = keys[j + 1];
+            vals[j] = vals[j + 1];
+        }
+        n--;
+        keys[n] = null;
+        vals[n] = null;
+
+    }
+
     public static void main(String[] args) {
         BinarySearchST<String, Integer> st = new BinarySearchST<>(5);
         // String s = "A";
@@ -129,7 +169,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
         String s6 = "a";
         System.out.println(st.ceiling(s3));
-        System.out.println(st.ceiling(s6));
+        // System.out.println(st.ceiling(s6));
+        System.out.println(st.floor(s4));
+        System.out.println(st.floor(s5));
+        System.out.println(st.ceiling(s1));
+        System.out.println(st.ceiling(s2));
 
     }
 
