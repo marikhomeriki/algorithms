@@ -69,9 +69,89 @@ public class BST<Key extends Comparable<Key>, Value> {
         } else {
             x.value = value;
         }
-
         x.n = 1 + size(x.left) + size(x.right);
         return x;
+    }
+
+    public Key min() {
+        Node minNode = min(root);
+        Key min = minNode.key;
+        return min;
+    }
+
+    private Node min(Node x) {
+        if (x.left == null) {
+            return x;
+        }
+        return min(x.left);
+    }
+
+    public Key max() {
+        return max(root).key;
+    }
+
+    private Node max(Node x) {
+        if (x.right == null) {
+            return x;
+        }
+        return max(x.right);
+    }
+
+    public Key ceiling(Key key) {
+        Node x = ceiling(root, key);
+        return x.key;
+
+    }
+
+    private Node ceiling(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+
+        int cmp = key.compareTo(x.key);
+
+        if (cmp == 0) {
+            return x;
+        } else if (cmp < 0) {
+            Node t = ceiling(x.left, key);
+            if (t != null) {
+                return t;
+            } else {
+                return x;
+            }
+        }
+
+        return ceiling(x.right, key);
+    }
+
+    public Key floor(Key key) {
+
+        Node x = floor(root, key);
+        if (x == null) {
+            return null;
+        } else {
+            return x.key;
+        }
+    }
+
+    private Node floor(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp == 0) {
+            return x;
+        } else if (cmp < 0) {
+            return floor(x.left, key);
+        } else {
+            Node t = floor(x.right, key);
+            if (t != null) {
+                return t;
+            } else {
+                return x;
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -90,20 +170,23 @@ public class BST<Key extends Comparable<Key>, Value> {
         String s1 = "A";
         st.put(s1, 11);
 
-        System.out.println();
-
         String s8 = "R";
         st.put(s8, 3);
-
-        System.out.println();
 
         String s14 = "H";
         st.put(s14, 3);
 
-        System.out.println();
-
         String s6 = "M";
         st.put(s6, 9);
+
+        String s9 = "Z";
+        st.put(s9, 19);
+
+        System.out.println("This is min " + st.min());
+        st.min();
+        st.floor(s3);
+        System.out.println("This is floor of X " + st.floor(s3));
+        System.out.println("This is floor of X " + st.floor(s9));
 
     }
 
