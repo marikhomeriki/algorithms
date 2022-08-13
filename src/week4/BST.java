@@ -139,6 +139,45 @@ public class BST<Key extends Comparable<Key>, Value> {
         root = deleteMax(root);
     }
 
+    public void delete(Key key) {
+        root = delete(root, key);
+
+    }
+
+    private Node delete(Node x, Key key) {
+        if (x == null) {
+            return null;
+        }
+        int cmp = key.compareTo(x.key);
+
+        if (cmp < 0) {
+            x.left = delete(x.left, key);
+        } else if (cmp > 0) {
+            x.right = delete(x.right, key);
+        } else {
+            if (x.right == null) {
+                return x.left;
+            }
+            if (x.left == null) {
+                return x.right;
+            }
+            Node t = x;
+            System.out.println("x is " + x.key);
+            System.out.println("t is " + t.key);
+            x = min(t.right);
+            System.out.println("x is " + x.key);
+            System.out.println("t right is " + t.right.key);
+            System.out.println("min of t right is " + min(t.right).key);
+            // System.out.println("x right is " + x.right.key);
+            x.right = deleteMin(t.right);
+            // System.out.println("x right now is " + x.right.key);
+            System.out.println("x  now is " + x.key);
+            x.left = t.left;
+        }
+        x.n = size(x.left) + size(x.right) + 1;
+        return x;
+    }
+
     public Key min() {
         Node minNode = min(root);
         Key min = minNode.key;
@@ -239,11 +278,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         String s8 = "R";
         st.put(s8, 3);
 
-        String s14 = "H";
-        st.put(s14, 3);
+        // String s14 = "H";
+        // st.put(s14, 3);
 
-        String s6 = "M";
-        st.put(s6, 9);
+        // String s6 = "M";
+        // st.put(s6, 9);
 
         System.out.println();
 
@@ -260,9 +299,13 @@ public class BST<Key extends Comparable<Key>, Value> {
 
         System.out.println("Select");
 
-        System.out.println(st.select(6));
+        // System.out.println(st.select(6));
 
         System.out.println("Select");
+
+        System.out.println(st.min());
+
+        st.delete("E");
 
         // System.out.println(st.rank("S"));
         // System.out.println(st.rank("E"));
