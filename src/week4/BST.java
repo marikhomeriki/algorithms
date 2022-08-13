@@ -68,8 +68,6 @@ public class BST<Key extends Comparable<Key>, Value> {
             x.value = value;
         }
         x.n = 1 + size(x.left) + size(x.right);
-        System.out.println("Node to return " + x.key);
-        System.out.println("Size to return " + x.n);
         return x;
     }
 
@@ -77,16 +75,12 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (x == null) {
             return null;
         }
-
         int t = size(x.left);
-        System.out.println("Left size " + t);
         if (t > k) {
             return select(x.left, k);
         } else if (t < k) {
             return select(x.right, k - t - 1);
         } else {
-            System.out.println("To return " + x.key);
-
             return x.key;
         }
 
@@ -237,17 +231,19 @@ public class BST<Key extends Comparable<Key>, Value> {
         System.out.println("This is floor of X " + st.floor(s3));
         System.out.println("This is floor of X " + st.floor(s9));
 
-        System.out.println();
+        System.out.println("Select");
 
-        // System.out.println(st.select(3));
+        System.out.println(st.select(6));
 
-        System.out.println(st.rank("S"));
-        System.out.println(st.rank("E"));
-        System.out.println(st.rank("X"));
-        System.out.println(st.rank("A"));
-        System.out.println(st.rank("R"));
-        System.out.println(st.rank("H"));
-        System.out.println(st.rank("M"));
+        System.out.println("Select");
+
+        // System.out.println(st.rank("S"));
+        // System.out.println(st.rank("E"));
+        // System.out.println(st.rank("X"));
+        // System.out.println(st.rank("A"));
+        // System.out.println(st.rank("R"));
+        // System.out.println(st.rank("H"));
+        // System.out.println(st.rank("M"));
 
     }
 
