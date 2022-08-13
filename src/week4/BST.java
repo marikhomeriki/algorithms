@@ -59,9 +59,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (x == null) {
             return new Node(key, value, 1);
         }
-
         int cmp = key.compareTo(x.key);
-
         if (cmp < 0) {
             x.left = put(x.left, key, value);
         } else if (cmp > 0) {
@@ -70,7 +68,54 @@ public class BST<Key extends Comparable<Key>, Value> {
             x.value = value;
         }
         x.n = 1 + size(x.left) + size(x.right);
+        System.out.println("Node to return " + x.key);
+        System.out.println("Size to return " + x.n);
         return x;
+    }
+
+    private Key select(Node x, int k) {
+        if (x == null) {
+            return null;
+        }
+
+        int t = size(x.left);
+        System.out.println("Left size " + t);
+        if (t > k) {
+            return select(x.left, k);
+        } else if (t < k) {
+            return select(x.right, k - t - 1);
+        } else {
+            System.out.println("To return " + x.key);
+
+            return x.key;
+        }
+
+    }
+
+    public Key select(int k) {
+        if (k < 0 || k >= size()) {
+            throw new IllegalArgumentException("argument to select() is invalid: " + k);
+        }
+
+        return select(root, k);
+    }
+
+    private int rank(Node x, Key key) {
+        if (x == null) {
+            return 0;
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) {
+            return rank(x.left, key);
+        } else if (cmp > 0) {
+            return 1 + size(x.left) + rank(x.right, key);
+        } else {
+            return size(x.left);
+        }
+    }
+
+    public int rank(Key key) {
+        return rank(root, key);
     }
 
     public Key min() {
@@ -179,14 +224,30 @@ public class BST<Key extends Comparable<Key>, Value> {
         String s6 = "M";
         st.put(s6, 9);
 
-        String s9 = "Z";
+        System.out.println();
+
+        String s9 = "E";
         st.put(s9, 19);
+
+        System.out.println();
 
         System.out.println("This is min " + st.min());
         st.min();
         st.floor(s3);
         System.out.println("This is floor of X " + st.floor(s3));
         System.out.println("This is floor of X " + st.floor(s9));
+
+        System.out.println();
+
+        // System.out.println(st.select(3));
+
+        System.out.println(st.rank("S"));
+        System.out.println(st.rank("E"));
+        System.out.println(st.rank("X"));
+        System.out.println(st.rank("A"));
+        System.out.println(st.rank("R"));
+        System.out.println(st.rank("H"));
+        System.out.println(st.rank("M"));
 
     }
 
