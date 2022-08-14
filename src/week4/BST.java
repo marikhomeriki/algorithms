@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import edu.princeton.cs.algs4.Queue;
 
 public class BST<Key extends Comparable<Key>, Value> {
 
@@ -162,16 +163,8 @@ public class BST<Key extends Comparable<Key>, Value> {
                 return x.right;
             }
             Node t = x;
-            System.out.println("x is " + x.key);
-            System.out.println("t is " + t.key);
             x = min(t.right);
-            System.out.println("x is " + x.key);
-            System.out.println("t right is " + t.right.key);
-            System.out.println("min of t right is " + min(t.right).key);
-            // System.out.println("x right is " + x.right.key);
             x.right = deleteMin(t.right);
-            // System.out.println("x right now is " + x.right.key);
-            System.out.println("x  now is " + x.key);
             x.left = t.left;
         }
         x.n = size(x.left) + size(x.right) + 1;
@@ -257,6 +250,33 @@ public class BST<Key extends Comparable<Key>, Value> {
             }
         }
 
+    }
+
+    public Iterable<Key> keys() {
+        return keys(min(root).key, max(root).key);
+    }
+
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> queue = new Queue<Key>();
+        keys(root, queue, lo, hi);
+        return queue;
+    }
+
+    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+        if (x == null) {
+            return;
+        }
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) {
+            keys(x.left, queue, lo, hi);
+        }
+        if (cmplo <= 0 && cmphi >= 0) {
+            queue.enqueue(x.key);
+        }
+        if (cmphi > 0) {
+            keys(x.right, queue, lo, hi);
+        }
     }
 
     public static void main(String[] args) {
