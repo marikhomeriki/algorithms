@@ -32,9 +32,9 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 ## Week 04
 
-🟡 Priority Queues
+🟢 Priority Queues
 
-🟡 Elementary Symbol Tables
+🟢 Elementary Symbol Tables
 
 ## Week 05
 
