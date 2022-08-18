@@ -32,14 +32,16 @@ public class LinearProbingHT<Key, Value> {
             resize(m * 2);
         }
 
-        for (int i = hash(key); keys[i] != null; i = (i + 1) % m) {
+        int i;
+        for (i = hash(key); keys[i] != null; i = (i + 1) % m) {
             if (key.equals(keys[i])) {
                 values[i] = value;
                 return;
             }
-            keys[i] = key;
-            values[i] = value;
+
         }
+        keys[i] = key;
+        values[i] = value;
         n++;
     }
 
@@ -53,6 +55,19 @@ public class LinearProbingHT<Key, Value> {
         keys = t.keys;
         values = t.values;
         m = t.m;
+    }
+
+    public static void main(String[] args) {
+        LinearProbingHT<Integer, Integer> ht = new LinearProbingHT<>(100);
+
+        for (int i = 0; i < 100; i++) {
+            ht.put(i, i);
+        }
+
+        for (int i = 99; i >= 0; i--) {
+            System.out.println(i + " " + ht.get(i));
+        }
+        System.out.println(ht.n);
     }
 
 }
