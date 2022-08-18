@@ -38,9 +38,9 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 ## Week 05
 
-🟡 Balanced Search Trees
+🟢 Balanced Search Trees
 
-🟡 Geometric Applications of BSTs
+🟢 Geometric Applications of BSTs
 
 ## Week 06
 
