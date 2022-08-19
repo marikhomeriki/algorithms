@@ -44,9 +44,9 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 ## Week 06
 
-🟡 Hash Tables
+🟢 Hash Tables
 
-🟡 Symbol Table Applications
+🟢 Symbol Table Applications
 
 ## Week 07
 
