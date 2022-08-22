@@ -11,6 +11,7 @@ public class MergeSortedArrays {
         int p2 = 0;
 
         for (int p = 0; p < m + n; p++) {
+
             if (p2 >= n || (p1 < m && arr[p1] <= nums2[p2])) {
                 nums1[p] = arr[p1];
                 p1++;
@@ -26,7 +27,7 @@ public class MergeSortedArrays {
         int m = 1;
         int n = 0;
 
-        int[] nums1 = new int[] { 1 };
+        int[] nums1 = new int[] { 1, 0 };
         int[] nums2 = new int[] {};
 
         MergeSortedArrays ml = new MergeSortedArrays();
