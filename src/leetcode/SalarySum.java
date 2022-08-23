@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class SalarySum {
     public double average(int[] salary) {
-        double avg = 0.0;
+
         double sum = 0;
         Arrays.sort(salary);
 
