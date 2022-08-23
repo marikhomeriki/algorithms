@@ -17,8 +17,6 @@ public class HeightChecker {
 
         }
 
-        System.out.println(Arrays.toString(heights));
-        System.out.println(count);
         return count;
     }
 
