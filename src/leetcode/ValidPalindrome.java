@@ -6,16 +6,18 @@ public class ValidPalindrome {
         s = s.toLowerCase();
         ArrayList<Character> al = new ArrayList<>();
 
-        char[] ca = s.toCharArray();
-
-        for (int i = 0; i < ca.length; i++) {
-            if (!(ca[i] >= 96 && ca[i] < 123)) {
-
-                continue;
+        for (char c : s.toCharArray()) {
+            if (Character.isLetterOrDigit(c)) {
+                al.add(c);
             }
-            al.add(ca[i]);
 
         }
+
+        // for (int i = 0; i < al.size() / 2; i++) {
+        // if (al.get(i) != al.get(al.size() - i - 1)) {
+        // return false;
+        // }
+        // }
 
         int p1 = 0;
         int p2 = al.size() - 1;
@@ -38,12 +40,16 @@ public class ValidPalindrome {
         String s1 = "race a car";
         String s2 = " ";
         String s3 = "1b1";
+        String s4 = "0P";
+        String s5 = "`l;`` 1o1 ??;l`";
         ValidPalindrome vp = new ValidPalindrome();
 
         System.out.println(vp.isPalindrome(s));
         System.out.println(vp.isPalindrome(s1));
         System.out.println(vp.isPalindrome(s2));
         System.out.println(vp.isPalindrome(s3));
+        System.out.println(vp.isPalindrome(s4));
+        System.out.println(vp.isPalindrome(s5));
     }
 
 }
