@@ -48,6 +48,32 @@ public class RansomNotes2 {
         return true;
     }
 
+    public boolean canConstruct2(String ransomNote, String magazine) {
+        if (ransomNote.length() > magazine.length()) {
+            return false;
+        }
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < magazine.length(); i++) {
+            int c = map.getOrDefault(magazine.charAt(i), 0);
+            map.put(magazine.charAt(i), c + 1);
+        }
+
+        for (int i = 0; i < ransomNote.length(); i++) {
+            int c = map.getOrDefault(ransomNote.charAt(i), 0);
+            map.put(ransomNote.charAt(i), c - 1);
+        }
+
+        for (int c : map.values()) {
+            if (c < 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         RansomNotes rn = new RansomNotes();
         String ransomNote = "aa";
