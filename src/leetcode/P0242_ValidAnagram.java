@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ValidAnagram {
+public class P0242_ValidAnagram {
     private boolean validAnagram(String s, String t) {
 
         char[] ca = s.toCharArray();
@@ -16,7 +16,7 @@ public class ValidAnagram {
     }
 
     public static void main(String[] args) {
-        ValidAnagram va = new ValidAnagram();
+        P0242_ValidAnagram va = new P0242_ValidAnagram();
         String s = "rat";
         String t = "car";
         System.out.println(va.validAnagram(s, t));

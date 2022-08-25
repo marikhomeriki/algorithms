@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.Deque;
 import java.util.HashMap;
 
-public class ValidParentheses {
+public class P0020_ValidParentheses {
 
     public boolean isValid(String s) {
         Deque<Character> dq = new LinkedList<>();
@@ -95,7 +95,7 @@ public class ValidParentheses {
     }
 
     public static void main(String[] args) {
-        ValidParentheses vp = new ValidParentheses();
+        P0020_ValidParentheses vp = new P0020_ValidParentheses();
         String s = "())";
         vp.isValid(s);
         System.out.println(vp.isValid(s));

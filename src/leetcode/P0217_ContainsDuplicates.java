@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ContainsDuplicates {
+public class P0217_ContainsDuplicates {
     private boolean containcDuplicates(int[] nums) {
 
         Set mp = new HashSet<>();
@@ -20,7 +20,7 @@ public class ContainsDuplicates {
     public static void main(String[] args) {
         int[] arr = new int[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 };
 
-        ContainsDuplicates cd = new ContainsDuplicates();
+        P0217_ContainsDuplicates cd = new P0217_ContainsDuplicates();
         Boolean b = cd.containcDuplicates(arr);
         System.out.println(b);
     }

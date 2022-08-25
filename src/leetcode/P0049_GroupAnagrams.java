@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GroupAnagrams {
+public class P0049_GroupAnagrams {
 
     private List<List<String>> groupsAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
@@ -36,7 +36,7 @@ public class GroupAnagrams {
     }
 
     public static void main(String[] args) {
-        GroupAnagrams ga = new GroupAnagrams();
+        P0049_GroupAnagrams ga = new P0049_GroupAnagrams();
         String[] strs = { "eat", "tea", "tan", "ate", "nat", "bat" };
 
         System.out.println(ga.groupsAnagrams(strs));

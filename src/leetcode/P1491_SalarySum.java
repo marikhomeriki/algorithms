@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class SalarySum {
+public class P1491_SalarySum {
     public double average(int[] salary) {
 
         double sum = 0;

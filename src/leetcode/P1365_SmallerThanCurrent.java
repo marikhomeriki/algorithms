@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SmallerThanCurrent {
+public class P1365_SmallerThanCurrent {
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int[] results = new int[nums.length];
         int[] arr = nums.clone();
@@ -23,7 +23,7 @@ public class SmallerThanCurrent {
 
     public static void main(String[] args) {
         int[] arr = new int[] { 8, 1, 2, 2, 3 };
-        SmallerThanCurrent stc = new SmallerThanCurrent();
+        P1365_SmallerThanCurrent stc = new P1365_SmallerThanCurrent();
         int[] res = stc.smallerNumbersThanCurrent(arr);
         System.out.println(Arrays.toString(res));
     }

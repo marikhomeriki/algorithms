@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class ValidPalindrome {
+public class P0125_ValidPalindrome {
     public boolean isPalindrome(String s) {
 
         s = s.toLowerCase();
@@ -42,7 +42,7 @@ public class ValidPalindrome {
         String s3 = "1b1";
         String s4 = "0P";
         String s5 = "`l;`` 1o1 ??;l`";
-        ValidPalindrome vp = new ValidPalindrome();
+        P0125_ValidPalindrome vp = new P0125_ValidPalindrome();
 
         System.out.println(vp.isPalindrome(s));
         System.out.println(vp.isPalindrome(s1));

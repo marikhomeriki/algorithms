@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class HeightChecker {
+public class P1051_HeightChecker {
 
     private int heightChecker(int[] heights) {
         int[] expected = new int[heights.length];
@@ -22,7 +22,7 @@ public class HeightChecker {
 
     public static void main(String[] args) {
         int[] heights = new int[] { 1, 1, 4, 2, 1, 3 };
-        HeightChecker hc = new HeightChecker();
+        P1051_HeightChecker hc = new P1051_HeightChecker();
         hc.heightChecker(heights);
 
     }

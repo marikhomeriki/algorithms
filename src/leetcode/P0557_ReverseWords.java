@@ -1,4 +1,4 @@
-public class ReverseWords {
+public class P0557_ReverseWords {
     public String reverseWords(String s) {
 
         String[] st = s.split(" ");
@@ -20,7 +20,7 @@ public class ReverseWords {
     }
 
     public static void main(String[] args) {
-        ReverseWords rw = new ReverseWords();
+        P0557_ReverseWords rw = new P0557_ReverseWords();
 
         String s = "Let's take LeetCode contest";
         rw.reverseWords(s);

@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MergeSortedArrays {
+public class P0088_MergeSortedArrays {
 
     public void MergeLeet(int[] nums1, int m, int[] nums2, int n) {
         int[] arr = new int[m];
@@ -30,7 +30,7 @@ public class MergeSortedArrays {
         int[] nums1 = new int[] { 1, 0 };
         int[] nums2 = new int[] {};
 
-        MergeSortedArrays ml = new MergeSortedArrays();
+        P0088_MergeSortedArrays ml = new P0088_MergeSortedArrays();
         ml.MergeLeet(nums1, m, nums2, n);
         System.out.println(Arrays.toString(nums1));
     }

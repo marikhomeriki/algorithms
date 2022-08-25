@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class ReverseString {
+public class P0344_ReverseString {
 
     private char[] reverseString(char[] s) {
 
@@ -14,7 +14,7 @@ public class ReverseString {
     }
 
     public static void main(String[] args) {
-        ReverseString rs = new ReverseString();
+        P0344_ReverseString rs = new P0344_ReverseString();
         char[] s = new char[] { 'h', 'e', 'l', 'l', 'o' };
         rs.reverseString(s);
     }

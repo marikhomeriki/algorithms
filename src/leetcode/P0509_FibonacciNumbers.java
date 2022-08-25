@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class FibonacciNumbers {
+public class P0509_FibonacciNumbers {
 
     private Map<Integer, Integer> memo = new HashMap<>();
 
@@ -21,7 +21,7 @@ public class FibonacciNumbers {
     }
 
     public static void main(String[] args) {
-        FibonacciNumbers fn = new FibonacciNumbers();
+        P0509_FibonacciNumbers fn = new P0509_FibonacciNumbers();
         int fib = fn.fib(4);
         System.out.println(fib);
 

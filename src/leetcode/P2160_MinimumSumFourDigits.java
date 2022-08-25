@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MinimumSumFourDigits {
+public class P2160_MinimumSumFourDigits {
 
     public int minSum(int num) {
         int[] numbers = new int[4];
@@ -18,7 +18,7 @@ public class MinimumSumFourDigits {
     }
 
     public static void main(String[] args) {
-        MinimumSumFourDigits msfd = new MinimumSumFourDigits();
+        P2160_MinimumSumFourDigits msfd = new P2160_MinimumSumFourDigits();
         int num = 2932;
         msfd.minSum(num);
 

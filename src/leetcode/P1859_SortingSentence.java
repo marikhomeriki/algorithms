@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class SortingSentence {
+public class P1859_SortingSentence {
     public String sortSentence(String s) {
         String[] arr = s.split(" ");
         String[] res = new String[arr.length];
@@ -12,7 +12,7 @@ public class SortingSentence {
     }
 
     public static void main(String[] args) {
-        SortingSentence ss = new SortingSentence();
+        P1859_SortingSentence ss = new P1859_SortingSentence();
         String input = "is2 sentence4 This1 a3";
         ss.sortSentence(input);
         System.out.println(ss.sortSentence(input));

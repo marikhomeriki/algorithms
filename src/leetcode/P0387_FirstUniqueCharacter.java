@@ -1,7 +1,7 @@
 import java.util.Map;
 import java.util.HashMap;
 
-public class FirstUniqueCharacter {
+public class P0387_FirstUniqueCharacter {
     public int firstUniqChar(String s) {
 
         Map<Character, Integer> map = new HashMap<>();
@@ -22,7 +22,7 @@ public class FirstUniqueCharacter {
     }
 
     public static void main(String[] args) {
-        FirstUniqueCharacter fuq = new FirstUniqueCharacter();
+        P0387_FirstUniqueCharacter fuq = new P0387_FirstUniqueCharacter();
         String s = "aabb";
         System.out.println(fuq.firstUniqChar(s));
         fuq.firstUniqChar(s);
