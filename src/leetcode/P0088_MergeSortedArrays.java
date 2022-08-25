@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class P0088_MergeSortedArrays {
 
-    public void MergeLeet(int[] nums1, int m, int[] nums2, int n) {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
         int[] arr = new int[m];
         for (int i = 0; i < m; i++) {
             arr[i] = nums1[i];
@@ -31,7 +31,7 @@ public class P0088_MergeSortedArrays {
         int[] nums2 = new int[] {};
 
         P0088_MergeSortedArrays ml = new P0088_MergeSortedArrays();
-        ml.MergeLeet(nums1, m, nums2, n);
+        ml.merge(nums1, m, nums2, n);
         System.out.println(Arrays.toString(nums1));
     }
 

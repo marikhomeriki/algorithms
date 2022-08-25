@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class P0344_ReverseString {
 
     private char[] reverseString(char[] s) {

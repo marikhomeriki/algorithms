@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class P1859_SortingSentence {
     public String sortSentence(String s) {
         String[] arr = s.split(" ");
