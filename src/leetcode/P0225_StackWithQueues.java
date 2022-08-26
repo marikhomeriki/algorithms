@@ -45,7 +45,6 @@ public class P0225_StackWithQueues {
 
     public static void main(String[] args) {
         Queue<Integer> q = new LinkedList<>();
-        P0225_StackWithQueues swq = new P0225_StackWithQueues();
 
         q.add(1);
         q.add(2);
