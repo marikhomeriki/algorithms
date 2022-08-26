@@ -21,7 +21,6 @@ public class P0225_StackWithQueues {
             while (q1.size() > 1) {
                 top = q1.remove();
                 q2.add(top);
-                System.out.println(top);
             }
 
             int res = q1.remove();
