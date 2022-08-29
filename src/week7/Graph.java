@@ -22,18 +22,28 @@ public class Graph {
         return E;
     }
 
-    private void ValidVertex(int v) {
+    private void validVertex(int v) {
         if (v < 0 || v >= V) {
             throw new IllegalArgumentException("This Vertex is not valid");
         }
     }
 
-    public void AddEdge(int v, int w) {
-        ValidVertex(v);
-        ValidVertex(w);
+    public void addEdge(int v, int w) {
+        validVertex(v);
+        validVertex(w);
         E++;
         adj[v].add(w);
         adj[w].add(v);
+    }
+
+    public Iterable<Integer> adj(int v) {
+        validVertex(v);
+        return adj[v];
+    }
+
+    public int degree(int v) {
+        validVertex(v);
+        return adj[v].size();
     }
 
 }
