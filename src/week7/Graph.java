@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Graph {
     private final int V;
-    private final int E;
+    private int E;
     private List<Integer>[] adj;
 
     public Graph(int V) {
@@ -20,6 +20,20 @@ public class Graph {
 
     public int E() {
         return E;
+    }
+
+    private void ValidVertex(int v) {
+        if (v < 0 || v >= V) {
+            throw new IllegalArgumentException("This Vertex is not valid");
+        }
+    }
+
+    public void AddEdge(int v, int w) {
+        ValidVertex(v);
+        ValidVertex(w);
+        E++;
+        adj[v].add(w);
+        adj[w].add(v);
     }
 
 }
