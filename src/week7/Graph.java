@@ -4,7 +4,7 @@ import java.util.List;
 public class Graph {
     private final int V;
     private final int E;
-    List<Integer>[] adj;
+    private List<Integer>[] adj;
 
     public Graph(int V) {
         this.V = V;
@@ -12,6 +12,14 @@ public class Graph {
         for (int v = 0; v < V; v++) {
             adj[v] = new ArrayList<>();
         }
+    }
+
+    public int V() {
+        return V;
+    }
+
+    public int E() {
+        return E;
     }
 
 }
