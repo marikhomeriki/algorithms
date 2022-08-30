@@ -21,6 +21,19 @@ public class BreadthFirstSearch {
         }
         distTo[s] = 0;
         marked[s] = true;
+        q.enqueue(s);
+
+        while (!q.isEmpty()) {
+            int v = q.dequeue();
+            for (int w : G.adj(s)) {
+                edgeTo[w] = v;
+                distTo[w] = distTo[v] + 1;
+                marked[w] = true;
+                q.enqueue(w);
+
+            }
+
+        }
 
     }
 
