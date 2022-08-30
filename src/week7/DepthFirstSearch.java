@@ -14,7 +14,7 @@ public class DepthFirstSearch {
         validVertex(s);
         marked[s] = true;
         for (int w : G.adj(s)) {
-            while (!marked(w)) {
+            if (!marked(w)) {
                 dfs(G, w);
             }
 
