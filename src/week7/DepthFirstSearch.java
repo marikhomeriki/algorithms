@@ -9,7 +9,22 @@ public class DepthFirstSearch {
         dfs(G, s);
     }
 
-    private void dfs(Graph g, int s) {
+    private void dfs(Graph G, int s) {
+        count++;
+        validVertex(s);
+        marked[s] = true;
+        for (int w : G.adj(s)) {
+            while (!marked(w)) {
+                dfs(G, w);
+            }
+
+        }
+
+    }
+
+    public boolean marked(int v) {
+        validVertex(v);
+        return marked[v];
     }
 
     private void validVertex(int v) {
