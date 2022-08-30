@@ -27,6 +27,10 @@ public class DepthFirstSearch {
         return marked[v];
     }
 
+    public int count() {
+        return count;
+    }
+
     private void validVertex(int v) {
         int V = marked.length;
         if (v < 0 || v > V) {
