@@ -30,11 +30,18 @@ public class BreadthFirstSearch {
                 distTo[w] = distTo[v] + 1;
                 marked[w] = true;
                 q.enqueue(w);
-
             }
-
         }
+    }
 
+    public int distTo(int v) {
+        validVertex(v);
+        return distTo(v);
+    }
+
+    public boolean hasPathTo(int v) {
+        validVertex(v);
+        return marked[v];
     }
 
     private void validVertex(int v) {
