@@ -9,6 +9,13 @@ public class CC {
         marked = new boolean[G.V()];
         id = new int[G.V()];
         size = new int[G.V()];
+
+        for (int v = 0; v < G.V(); v++) {
+            if (!marked[v]) {
+                dfs(G, v);
+                count++;
+            }
+        }
     }
 
     private void dfs(Graph G, int v) {
@@ -21,6 +28,22 @@ public class CC {
             }
         }
 
+    }
+
+    public int id(int v) {
+        return id[v];
+    }
+
+    public int size(int v) {
+        return size[id[v]];
+    }
+
+    public int count() {
+        return count;
+    }
+
+    public boolean connected(int v, int w) {
+        return id[v] == id[w];
     }
 
 }
