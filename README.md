@@ -60,36 +60,3 @@ Code and assignments are written both in `java` (using [algs4.jar](https://algs4
 
 🟡 Shortest Paths
 
-## Week 09
-
-⚪️ Maximum Flow and Minimum Cut
-
-🟡 Radix Sorts
-
-## Week 10
-
-🟡 Tries
-
-⚪️ Substring Search
-
-## Week 11
-
-⚪️ Regular Expressions
-
-⚪️ Data Compression
-
-## Week 12
-
-⚪️ Reductions
-
-⚪️ Linear Programming
-
-⚪️ Intractability
-
-## Legend
-
-🟡 Pending
-
-🟢 Completed
-
-⚪️ Skipped
