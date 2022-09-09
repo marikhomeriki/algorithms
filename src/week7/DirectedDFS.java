@@ -8,7 +8,7 @@ public class DirectedDFS {
         dfs(G, s);
     }
 
-    private void dfs(Digraph G, int s) {
+    public void dfs(Digraph G, int s) {
         count++;
         marked[s] = true;
         for (int w : G.adj(s)) {
@@ -17,6 +17,10 @@ public class DirectedDFS {
             }
         }
 
+    }
+
+    public boolean marked(int v) {
+        return marked[v];
     }
 
 }
