@@ -23,4 +23,8 @@ public class DirectedDFS {
         return marked[v];
     }
 
+    public int count() {
+        return count;
+    }
+
 }
