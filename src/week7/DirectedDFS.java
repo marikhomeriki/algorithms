@@ -16,7 +16,6 @@ public class DirectedDFS {
                 dfs(G, w);
             }
         }
-
     }
 
     public boolean marked(int v) {
