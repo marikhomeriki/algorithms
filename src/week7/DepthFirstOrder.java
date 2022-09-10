@@ -57,4 +57,12 @@ public class DepthFirstOrder {
         return reverse;
     }
 
+    public int pre(int v) {
+        return pre[v];
+    }
+
+    public int post(int v) {
+        return post[v];
+    }
+
 }
