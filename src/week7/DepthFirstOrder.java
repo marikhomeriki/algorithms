@@ -1,4 +1,5 @@
 import edu.princeton.cs.algs4.Queue;
+import edu.princeton.cs.algs4.Stack;
 
 public class DepthFirstOrder {
 
@@ -25,7 +26,35 @@ public class DepthFirstOrder {
 
     }
 
-    private void dfs(Digraph g, int v) {
+    private void dfs(Digraph G, int v) {
+        marked[v] = true;
+        pre[v] = preCounter++;
+        preorder.enqueue(v);
+        for (int w : G.adj(v)) {
+            if (!marked[w]) {
+                dfs(G, w);
+            }
+        }
+        postorder.enqueue(v);
+        post[v] = postCounter++;
+
+    }
+
+    public Iterable<Integer> pre() {
+        return preorder;
+    }
+
+    public Iterable<Integer> post() {
+        return postorder;
+    }
+
+    public Iterable<Integer> reverseOrder() {
+        Stack<Integer> reverse = new Stack<Integer>();
+
+        for (int w : postorder) {
+            reverse.push(w);
+        }
+        return reverse;
     }
 
 }
